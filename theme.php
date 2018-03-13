@@ -105,15 +105,6 @@ global $ltime, $path, $fullwidth, $menucollapses, $emoncms_version, $theme, $the
         if ($maxwidth3 > $maxwidth2) {
             $maxwidth3 = $maxwidth2 - 1;
         }
-
-        // Updates message
-        if ($updates_content != '') {
-            $out = '<div class="alert alert-warning update-message" role="alert">';
-            $out .= $updates_content;
-            $out .= '<button type="button" class="close" onclick="$.ajax({url: \'' . $path . 'update/closeupdatemessage.json\',async: true});console.log(\'hola\')" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-            $out .='</div>';
-            $updates_content = $out;
-        }
         ?>
 
         <script type="text/javascript" src="<?php echo $path; ?>Lib/jquery-1.11.3.min.js"></script>
@@ -196,15 +187,13 @@ global $ltime, $path, $fullwidth, $menucollapses, $emoncms_version, $theme, $the
             if ($fullwidth && $route->controller == "dashboard") {
                 ?>
                 <div>
-                    <?php echo $updates_content; ?>
                     <?php echo $content; ?>
                 </div>
                 <?php
             }
             else if ($fullwidth) {
                 ?>
-                <div class = "container-fluid"><div class="row-fluid"><div class="span12">            
-                            <?php echo $updates_content; ?>
+                <div class = "container-fluid"><div class="row-fluid"><div class="span12">
                             <?php echo $content; ?>
                         </div></div></div>
                 <?php
@@ -212,7 +201,6 @@ global $ltime, $path, $fullwidth, $menucollapses, $emoncms_version, $theme, $the
             else {
                 ?>
                 <div class="container">
-                    <?php echo $updates_content; ?>
                     <?php echo $content; ?>
                 </div>
             <?php } ?>
